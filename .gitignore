@@ -1,0 +1,5 @@
+# Firebase Credential
+*.json
+
+/.env
+
