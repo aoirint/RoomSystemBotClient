@@ -3,8 +3,6 @@ services:
   app:
     build: .
     restart: always
-    devices:
-      - /dev/ttyACM0:/dev/ttyACM0
     volumes:
       - ./credential.json:/credential.json:ro
       - ${XDG_RUNTIME_DIR}/pulse/native/:${XDG_RUNTIME_DIR}/pulse/native

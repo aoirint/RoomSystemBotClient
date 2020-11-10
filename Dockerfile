@@ -9,7 +9,6 @@ RUN { \
 } | tee /etc/apt/apt.conf
 
 RUN apt update && apt install -y \
-        gosu \
 	pulseaudio \
         sox \
 	libsox-fmt-all \
@@ -21,9 +20,6 @@ ADD requirements.txt /tmp/
 RUN pip3 install -r /tmp/requirements.txt
 
 ADD ./app/ /code
-
-#ADD ./docker-entrypoint.sh /
-#ENTRYPOINT [ "/docker-entrypoint.sh" ]
 
 CMD [ "python3", "/code/main.py" ]
 
