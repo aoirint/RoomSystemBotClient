@@ -5,7 +5,12 @@ Firebase Realtime Database上の変更を検知し、スピーカから音を鳴
 - Raspberry Pi 4B
   - オーディオジャック→アンプ→スピーカ
 
-## 設定
+## 機能と設定
+`./docker-compose.yml`で一部の設定をしていますが、
+不足している環境変数があります。
+これは`./.env`ファイルを作成して設定します。
+`./template.env`を`./.env`にコピーして編集してください。
+
 ### 通知音
 botにメッセージが送信されたとき、通知音を鳴らします。
 
@@ -15,6 +20,11 @@ botにメッセージが送信されたとき、通知音を鳴らします。
 
 それぞれ、`./sounds/opening.mp3`、`./sounds/closing.mp3`に配置してください。
 再生中に処理はブロックするので、できるだけ短い音声が好ましいです。
+
+想定としては、OtoLogicさんの`チャイム　アナウンス03`で、
+順再生を`opening.mp3`、逆再生を`closing.mp3`にします。
+
+- [フリー効果音：アナウンス音｜OtoLogic](https://otologic.jp/free/se/announce01.html)
 
 ### 個人サウンド
 botにメッセージを送った人固有の音声を再生することができます。
@@ -29,7 +39,7 @@ botにメッセージを送った人固有の音声を再生することがで�
 OpenJTalkを使ったbot宛てメッセージ読み上げに対応しています。
 合成音声のモデルとしてHTS Voiceファイルをダウンロードしてくる必要があります。
 
-[MMDAgent - Browse /MMDAgent_Example at SourceForge.net](https://sourceforge.net/projects/mmdagent/files/MMDAgent_Example/)
+- [MMDAgent - Browse /MMDAgent_Example at SourceForge.net](https://sourceforge.net/projects/mmdagent/files/MMDAgent_Example/)
 
 上記リンクからダウンロードできる`mei_normal.htsvoice`の使用を想定しています。
 `./voices/mei_normal.htsvoice`に配置してください。
