@@ -78,7 +78,7 @@ Dockerコンテナ内のパスなので注意してください。マウント�
 右上に表示されている自分のアイコンのうち、オンライン状態を示す部分では、`presence-8:orgid:{aadObjectId}`の形式で読み取れます。
 また、投稿のアイコン画像部分の`profile-picture`要素では、`personCardTrigger-8:orgid:{aadObjectId}`の形式で読み取れます。
 
-個人サウンドは、`./sounds/person/*.mp3`に配置します。`*.mp3`の`*`は`aadObjectId`です。
+個人サウンドは、`./sounds/person/{aadObjectId}.mp3`に配置します。`{}`は不要です。
 当該ファイルが存在しなかった場合、再生をスキップします（スキップした旨をログに残します）。
 
 この機能は、環境変数`PERSON_SOUND_ENABLED`を`0`で無効化、`1`で有効化します。
