@@ -1,6 +1,11 @@
 # RoomSystemBotClient
 Firebase Realtime Database上の変更を検知し、スピーカから音を鳴らします。
 
+[aoirint/room-system-firebase](https://github.com/aoirint/room-system-firebase)と同時に使うことを想定しています。
+room-system-firebaseは、Microsoft TeamsからのOutgoing Webhookを受け取り、このソフトウェアに対応した形でRealtime Databaseに保存します。
+このソフトウェアは、この変更を検知し、スピーカを鳴らしたあと、当該メッセージをRealtime Database上から削除します。
+
+
 ## 想定環境
 - Raspberry Pi 4B
   - オーディオジャック→アンプ→スピーカ
