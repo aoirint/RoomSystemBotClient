@@ -71,7 +71,12 @@ Dockerコンテナ内のパスなので注意してください。マウント�
 
 ### 個人サウンド
 この機能を使用するには、事前に送信者のTeamsアカウントの`aadObjectId`（UUID形式の固有ID）を知っている必要があります。
-`aadObjectId`は、`docker-compose logs -f`でログを参照して見つけるか、Teamsをブラウザで開いてDeveloper Toolsを使って調べる方法があります（TODO：詳細説明）。
+`aadObjectId`は、`docker-compose logs -f`でログを参照して見つけるか、Teamsをブラウザで開いてDeveloper Toolsを使って調べる方法があります。
+
+ブラウザで開いたTeamsにおいて、
+オンライン状態を示すアイコンの`data-tid`属性の一部にこの`aadObjectId`が含まれています。
+右上に表示されている自分のアイコン部分では、`presence-8:orgid:{aadObjectId}`の形式で読み取れます。
+また、投稿のアイコン画像部分の`profile-picture`要素では、`personCardTrigger-8:orgid:{aadObjectId}`の形式で読み取れます。
 
 個人サウンドは、`./sounds/person/*.mp3`に配置します。`*.mp3`の`*`は`aadObjectId`です。
 当該ファイルが存在しなかった場合、再生をスキップします（スキップした旨をログに残します）。
