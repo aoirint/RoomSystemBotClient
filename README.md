@@ -34,6 +34,22 @@ bot（Outgoing Webhook）に対するメンションを送るだけで
 これは`./.env`ファイルを作成して設定します。
 `./template.env`を`./.env`にコピーして編集してください。
 
+`HTTP_PROXY`、`HTTPS_PROXY`は、プロキシ設定が必要な場合の設定です。
+不要ならば削除してください（非プロキシ環境での動作確認はしてないです）。
+
+`FIREBASE_DATABASE_URL`は、Firebase Realtime DatabaseのURLです。
+データベースのデータ閲覧ページから確認できると思います。
+`*.firebaseio.com`の形式のはずです。
+
+`OPENJTALK_HTSVOICE_PATH`は、音声合成に使うHTS Voiceファイルのパスです。
+Dockerコンテナ内のパスなので注意してください。マウントは`docker-compose.yml`内で設定しています。
+
+`SPEECH_ENABLED`、`PERSON_SOUND_ENABLED`、`STATIC_SPEECH_ENABLED`は各機能の有効化/無効化を切り替えます。
+`0`で無効化、`1`で有効化です。
+
+`STATIC_SPEECH_TEXT`は定型メッセージ読み上げに使う定型文です。
+
+
 ### 通知音
 通知音は「開始」と「終了」の2種類必要です。
 「開始」は下の各機能を実行する前に、
@@ -44,6 +60,7 @@ bot（Outgoing Webhook）に対するメンションを送るだけで
 
 想定としては、OtoLogicさんの`チャイム　アナウンス03`で、
 順再生を`opening.mp3`、逆再生を`closing.mp3`にします。
+逆再生はAudacityなどで作成してください。
 
 - [フリー効果音：アナウンス音｜OtoLogic](https://otologic.jp/free/se/announce01.html)
 
