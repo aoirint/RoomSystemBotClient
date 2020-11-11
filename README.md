@@ -33,6 +33,7 @@ botにメッセージを送った人固有の音声を再生することがで�
 `aadObjectId`は、`docker-compose logs -f`でログを参照して見つけるか、Teamsをブラウザで開いてDeveloper Toolsを使って調べる方法があります（TODO：詳細説明）。
 
 個人サウンドは、`/sounds/person/*.mp3`に配置します。`*.mp3`の`*`は`aadObjectId`です。
+当該ファイルが存在しなかった場合、再生はスキップされます。
 
 この機能は、環境変数`PERSON_SOUND_ENABLED`を`0`で無効化、`1`で有効化します。
 
