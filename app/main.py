@@ -23,13 +23,17 @@ def on_message_updated(event: db.Event):
         return
 
     messages = event.data
+    print('New Message coming.')
 
     for key, message in messages.items():
-        userid = message.get('from', {}).get('aadObjectId')
-        username = message.get('from', {}).get('name')
+        post_user = message.get('from', {})
+        userid = post_user.get('aadObjectId')
+        username = post_user.get('name')
 
         text = message.get('text')
-        
+
+        subprocess.run([ 'play', '/sounds/opening.mp3' ])
+
         p = subprocess.Popen([ 'open_jtalk', '-x', '/var/lib/mecab/dic/open-jtalk/naist-jdic', '-m', OPENJTALK_HTSVOICE_PATH, '-r', '1.0', '-ow', '/dev/stdout' ], stdin=subprocess.PIPE, stdout=subprocess.PIPE)
         sound, _ = p.communicate(text.encode('utf-8'))
 
@@ -37,6 +41,12 @@ def on_message_updated(event: db.Event):
         p.communicate(sound)
 
         print(message)
+        
+        messagesRef.child(key).delete()
+        print(f'Message ${key} deleting')
+
+        subprocess.run([ 'play', '/sounds/closing.mp3' ])
+        
 
 if __name__ == '__main__':
     print('start listening')
