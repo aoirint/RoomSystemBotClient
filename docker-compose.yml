@@ -3,15 +3,19 @@ services:
   app:
     build: .
     restart: always
+    user: "${HOST_UID:?set HOST_UID}:${HOST_GID:?set HOST_GID}"
+    group_add:
+      - audio
     volumes:
       - ./credential.json:/credential.json:ro
-      - ${XDG_RUNTIME_DIR}/pulse/native/:${XDG_RUNTIME_DIR}/pulse/native
-      - ${HOME}/.config/pulse/:/root/.config/pulse
       - ./sounds:/sounds
       - ./voices:/voices
+      - ${XDG_RUNTIME_DIR:?set XDG_RUNTIME_DIR}/pulse/native:/pulseaudio.socket
+      - ${HOME:?set HOME}/.config/pulse/cookie:/pulseaudio.cookie:ro
     environment:
       PYTHONUNBUFFERED: 1
-      PULSE_SERVER: unix:${XDG_RUNTIME_DIR}/pulse/native
+      PULSE_SERVER: unix:/pulseaudio.socket
+      PULSE_COOKIE: unix:/pulseaudio.cookie
       FIREBASE_SECRET_PATH: /credential.json
       # FIREBASE_DATABASE_URL: https://YOUR_PROJECT_ID.firebaseio.com/
     env_file:
