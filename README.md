@@ -8,8 +8,13 @@ room-system-firebaseは、Microsoft TeamsからのOutgoing Webhookを受け取�
 
 ## 想定環境
 - Raspberry Pi 4B
+  - Raspberry Pi OS Lite
   - オーディオジャック→アンプ→スピーカ
 
+### 注意
+PulseAudioを使うため、以下のドキュメントの「注意」の欄と同様の設定が必要です。
+
+- https://github.com/aoirint/RoomSystemSensorConnector/blob/master/README.md#%E6%B3%A8%E6%84%8F
 
 ## 機能
 ### 通知音
